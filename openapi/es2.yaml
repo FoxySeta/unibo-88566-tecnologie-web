@@ -1,0 +1,112 @@
+swagger: "2.0"
+info:
+  description: "API Videogiochi"
+  version: "0.0.1"
+  title: "API Videogiochi"
+
+host: "tw.cs.unbo.it"
+basePath: "/v1"
+
+schemes:
+  - "https"
+  - "http"
+
+paths:
+  /games/:
+    # 1. ottenere l'elenco di tutti i giochi di una data categoria
+    get:
+      parameters:
+      - name: category
+        in: query
+        type: string
+        enum:
+        - shooter
+        - adventure
+        - puzzle
+        - sport
+        required: true
+      responses:
+        200:
+          description: "OK"
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/Game"
+        400:
+          description: "Error"
+    # 3. aggiungere un insieme di giochi e le relative informazioni; è
+    # possibile quindi aggiungere anche più di un gioco con un’unica
+    # richiesta 
+    post:
+      parameters:
+        - name: games
+          description: "An array of valid JSON representations of Games"
+          in: body
+          required: true
+          schema:
+            type: array
+            items:
+              type: string
+              format: json
+      responses:
+        200:
+          description: "OK"
+        400:
+          description: "Error"
+  # 2. modificare il numero minimo e massimo di giocatori in un gioco
+  /games/{gameId}:
+    post:
+      parameters:
+        - name: gameId
+          in: path
+          type: integer
+          format: int64
+          required: true
+        - name: cardinality
+          in: body
+          schema:
+            $ref: "#/definitions/Game"
+      responses:
+        200:
+          description: "OK"
+        400:
+          description: "Error"
+
+definitions:
+  Category:
+    type: string
+    enum:
+    - shooter
+    - adventure
+    - puzzle
+    - sport
+  Interval:
+    type: object
+    required:
+    - min
+    - max
+    properties:
+      min:
+        type: integer
+        format: int64
+      max:
+        type: integer
+        format: int64
+  Game:
+    type: object
+    required:
+      - id
+      - name
+      - category
+      - minPlayers
+      - maxPlayers
+    properties:
+      id:
+        type: integer
+        format: int64
+      name:
+        type: string
+      category:
+        $ref: "#/definitions/Category"
+      cardinality:
+        $ref: "#/definitions/Interval"
