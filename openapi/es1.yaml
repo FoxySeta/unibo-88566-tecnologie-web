@@ -24,7 +24,7 @@ paths:
               $ref: "#/definitions/Menu"
         400:
           description: "Error"
-  # 2. ottenere le informazioni di uno specifico menù: ID e descrizione, senza
+  # 2. ottenere le informazioni di uno specifico menÃ¹: ID e descrizione, senza
   # elenco piatti
   /menus/{menuId}:
     get:
@@ -46,7 +46,7 @@ paths:
     post:
       parameters:
         - name: menuId
-          in: body
+          in: path
           type: integer
           format: int64
           required: true
@@ -86,6 +86,5 @@ definitions:
       description:
         type: string
       price:
-        type: float
-        format: float32
-
+        type: number
+        format: float
