@@ -1,0 +1,22 @@
+body {
+  font-family: Verdana;
+}
+
+h1,
+h2 {
+  background-color: grey;
+  font-style: italic;
+  text-align: right;
+}
+
+.commodo {
+  background-color: red;
+  font-size: 125%;
+  font-weight: bold;
+  letter-spacing: 20px;
+}
+
+.fragment,
+.quote {
+  background-color: yellow;
+}
