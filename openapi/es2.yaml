@@ -16,15 +16,15 @@ paths:
     # 1. ottenere l'elenco di tutti i giochi di una data categoria
     get:
       parameters:
-      - name: category
-        in: query
-        type: string
-        enum:
-        - shooter
-        - adventure
-        - puzzle
-        - sport
-        required: true
+        - name: category
+          in: query
+          type: string
+          enum:
+            - shooter
+            - adventure
+            - puzzle
+            - sport
+          required: true
       responses:
         200:
           description: "OK"
@@ -36,7 +36,7 @@ paths:
           description: "Error"
     # 3. aggiungere un insieme di giochi e le relative informazioni; è
     # possibile quindi aggiungere anche più di un gioco con un’unica
-    # richiesta 
+    # richiesta
     post:
       parameters:
         - name: games
@@ -76,15 +76,15 @@ definitions:
   Category:
     type: string
     enum:
-    - shooter
-    - adventure
-    - puzzle
-    - sport
+      - shooter
+      - adventure
+      - puzzle
+      - sport
   Interval:
     type: object
     required:
-    - min
-    - max
+      - min
+      - max
     properties:
       min:
         type: integer

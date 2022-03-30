@@ -38,7 +38,7 @@ paths:
         200:
           description: "OK"
           schema:
-              $ref: "#/definitions/Menu"
+            $ref: "#/definitions/Menu"
         400:
           description: "Error"
   # 3. aggiungere un nuovo piatto ad un menù
