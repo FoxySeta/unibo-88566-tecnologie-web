@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Umma Gramma</title>
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl"
+      crossorigin="anonymous"
+    />
+
+    <!-- Custom styles for this template -->
+    <style>
+      body {
+        padding-top: 70px;
+      }
+
+      .sentence {
+        padding: 2px;
+        border: dotted transparent 2px;
+      }
+
+      .edit-sentence {
+        border-color: brown;
+      }
+      .edit-main {
+        color: blue;
+        background-color: #ffffcc;
+      }
+      .edit-sub {
+        color: green;
+        background-color: #eeffff;
+      }
+    </style>
+  </head>
+
+  <body>
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">Umma Gramma</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarCollapse"
+          aria-controls="navbarCollapse"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <ul class="navbar-nav me-auto mb-2 mb-md-0">
+            <li class="nav-item">
+              <a
+                class="nav-link active"
+                aria-current="page"
+                href="#"
+                data-bs-toggle="modal"
+                data-bs-target="#about"
+                >About</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="p-2">
+      <div class="row clearfix">
+        <div class="col-3">
+          <div class="border mb-3">
+            <h4>Documenti</h4>
+            <ul id="list"></ul>
+          </div>
+          <div>
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+              <li class="nav-item" role="presentation">
+                <button
+                  class="nav-link active"
+                  id="view-tab"
+                  data-bs-toggle="tab"
+                  data-bs-target="#view"
+                  type="button"
+                  role="tab"
+                  aria-controls="view"
+                  aria-selected="true"
+                >
+                  Vista
+                </button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button
+                  class="nav-link"
+                  id="edit-tab"
+                  data-bs-toggle="tab"
+                  data-bs-target="#edit"
+                  type="button"
+                  role="tab"
+                  aria-controls="edit"
+                  aria-selected="false"
+                >
+                  Modifica
+                </button>
+              </li>
+            </ul>
+            <div class="tab-content" id="myTabContent">
+              <div
+                class="tab-pane fade show active p-2 border border-top-0"
+                id="view"
+                role="tabpanel"
+                aria-labelledby="view-tab"
+              >
+                <form>
+                  <div class="form-check">
+                    <input
+                      class="form-check-input frasi"
+                      type="checkbox"
+                      value=""
+                      id="main"
+                    />
+                    <label class="form-check-label" for="main"
+                      >Frasi principali</label
+                    >
+                  </div>
+                  <div class="form-check">
+                    <input
+                      class="form-check-input frasi"
+                      type="checkbox"
+                      value=""
+                      id="sub"
+                    />
+                    <label class="form-check-label" for="sub"
+                      >Frasi secondarie</label
+                    >
+                  </div>
+                  <div class="row mb-3">
+                    <label for="sentence" class="col col-form-label"
+                      >Scegli la frase:</label
+                    >
+                    <div class="col">
+                      <input
+                        type="number"
+                        class="form-control text-end"
+                        id="sentence"
+                        value="0"
+                        min="0"
+                        max="10"
+                      />
+                    </div>
+                  </div>
+                </form>
+              </div>
+              <div
+                class="tab-pane fade p-2 border border-top-0"
+                id="edit"
+                role="tabpanel"
+                aria-labelledby="edit-tab"
+              >
+                <div
+                  class="btn-group d-flex justify-content-center"
+                  role="group"
+                  aria-label="Buttons"
+                >
+                  <button
+                    type="button"
+                    class="btn btn-warning"
+                    id="markSentence"
+                  >
+                    Frase
+                  </button>
+                  <button type="button" class="btn btn-info" id="markMain">
+                    Principale
+                  </button>
+                  <button type="button" class="btn btn-success" id="markSub">
+                    Subordinata
+                  </button>
+                </div>
+                <div
+                  class="btn-group d-flex justify-content-center mt-2"
+                  role="group"
+                  aria-label="Save"
+                >
+                  <button type="button" class="btn btn-outline-dark" id="save">
+                    Salva annotazioni
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-9">
+          <div
+            class="p-5 bg-light border rounded-3 text-center mb-3"
+            id="title"
+          >
+            <h1>Umma Gramma</h1>
+          </div>
+          <div id="file"></div>
+        </div>
+      </div>
+    </div>
+    <!-- /container -->
+
+    <!-- Modal -->
+
+    <div class="modal" tabindex="-1" id="about">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">About Umma Gramma</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <p>
+              Utilizzata per gli scopi del corso di Tecnologie Web
+              all'Università di Bologna
+            </p>
+            <p>© 2021 Fabio Vitali. All rights reserved.</p>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-primary"
+              data-bs-dismiss="modal"
+            >
+              Ok
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap core JavaScript
+	================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script
+      src="//code.jquery.com/jquery-3.5.1.min.js"
+      integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="//cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      const listItemTpl = `<li><a href='#' onclick='load("$url","$notes")'>$label</a></li>`;
+      let notes = {};
+      let mode = "view";
+
+      $(document).ready(main);
+
+      function main() {
+        fetch("filelist.json")
+          .then((r) => r.json())
+          .then(function (d) {
+            for (let i = 0; i < d.length; i++) {
+              let listItem = listItemTpl.tpl({
+                url: d[i].url,
+                notes: d[i].notes,
+                label: d[i].label,
+              });
+              $("#list").append(listItem);
+            }
+          });
+
+        $("#main").click(function () {
+          if (this.checked) $(".main").addClass("text-primary");
+          else $(".main").removeClass("text-primary");
+        });
+        $("#sub").click(function () {
+          if (this.checked) $(".sub").addClass("text-danger");
+          else $(".sub").removeClass("text-danger");
+        });
+        $("#sentence").change(function () {
+          let v = this.value;
+          let s = $(".sentence");
+          s.removeClass("bg-warning");
+          $(s[v - 1]).addClass("bg-warning");
+        });
+        $("#markSentence").click(function () {
+          addNote("sentence");
+        });
+        $("#markMain").click(function () {
+          addNote("main");
+        });
+        $("#markSub").click(function () {
+          addNote("sub");
+        });
+        $("#save").click(function () {
+          saveNotes();
+        });
+
+        $('*[data-bs-toggle="tab"]').on("shown.bs.tab", function (e) {
+          if (e.target.id == "edit-tab") {
+            mode = "edit";
+            $(".sentence").addClass("edit-sentence");
+            $(".main").addClass("edit-main");
+            $(".sub").addClass("edit-sub");
+          } else {
+            mode = "view";
+            $(".sentence").removeClass("edit-sentence");
+            $(".main").removeClass("edit-main");
+            $(".sub").removeClass("edit-sub");
+          }
+        });
+      }
+
+      /* ------------------------------------------  */
+      /*   Molti modi per creare connessioni ajax    */
+      /*   Modo 11: fetch                            */
+      /* ------------------------------------------  */
+      function load(file, notelist) {
+        notes.filename = notelist;
+        fetch(file)
+          .then((response) => {
+            if (!response.ok) {
+              throw new Error("Non ho potuto caricare il file " + file);
+            }
+            return response.text();
+          })
+          .then(function (d) {
+            $("#file").html(d);
+            $("#title").html($("#file h1"));
+            $(".frasi").prop("checked", false);
+            $("#sentence").val(0);
+          })
+          .then(function () {
+            $.get(notelist)
+              .then(function (d) {
+                notes.data = d;
+              })
+              .fail(function (a) {
+                notes.data = [];
+              })
+              .then(showNotes);
+          });
+      }
+
+      function saveNotes() {
+        fetch("save.php", {
+          method: "POST",
+          body: JSON.stringify(notes),
+        })
+          .then((response) => response.json())
+          .then(function (d) {
+            alert("Note salvate");
+          });
+      }
+
+      function showNotes() {
+        for (let i = 0; i < notes.data.length; i++) {
+          insertNote(notes.data[i], mode == "edit");
+        }
+        let n = $(".sentence").length;
+        $("#sentence")[0].max = n;
+      }
+
+      function addNote(type) {
+        let s = selection();
+        let dad = s.anchorNode.parentElement;
+        let guida = s.anchorNode.substringData(s.anchorOffset, 20);
+        if (compatibleExtremes(s)) {
+          let spanId = "span-" + ($("#file span").length + 1);
+          let pos = dad.childNodes.indexOf(s.anchorNode);
+          let n = {
+            type: type,
+            id: spanId,
+            node: dad.id,
+            pos: pos,
+            guide: guida,
+            start: Math.min(s.anchorOffset, s.focusOffset),
+            end: Math.max(s.anchorOffset, s.focusOffset),
+          };
+          notes.data.push(n);
+          insertNote(n, true);
+        }
+      }
+
+      function insertNote(note, active) {
+        let r = document.createRange();
+        let father = $("#" + note.node)[0];
+        let node = father.childNodes[note.pos];
+        r.setStart(node, note.start);
+        r.setEnd(node, note.end);
+        let span = document.createElement("span");
+        span.setAttribute("id", note.id);
+        span.setAttribute(
+          "class",
+          note.type + (active ? " edit-" + note.type : "")
+        );
+        r.surroundContents(span);
+      }
+
+      function compatibleExtremes(n) {
+        return n.anchorNode === n.focusNode && n.type == "Range";
+      }
+
+      function selection() {
+        if (window.getSelection) {
+          return window.getSelection();
+        } else if (document.getSelection) {
+          return document.getSelection();
+        } else if (document.selection) {
+          return document.selection.createRange().text;
+        }
+      }
+
+      String.prototype.tpl = function (o) {
+        let r = this;
+        for (let i in o) {
+          r = r.replace(new RegExp("\\$" + i, "g"), o[i]);
+        }
+        return r;
+      };
+
+      NodeList.prototype.indexOf = function (n) {
+        let i = -1;
+        while (this.item(i) !== n) {
+          i++;
+        }
+        return i;
+      };
+    </script>
+  </body>
+</html>
