@@ -46,7 +46,7 @@
         body.appendChild(tbl) 
       } 
       var onclick_fn = () => { 
-          const promise = get_request('http://localhost:8080/js/test.json'); 
+          const promise = get_request('es4.json'); 
           promise.then( val => { 
                   console.log("asynchronous logging has val:",val); 
                   tableCreate(val); 
