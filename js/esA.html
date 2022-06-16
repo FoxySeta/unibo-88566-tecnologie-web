@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head> 
+    <title>Prove Javascript</title>
+    <script src="jquery.js"></script>
+    <script type="text/javascript">
+      window.onload = function(){
+              $.ajax({
+                      url: API_SERVER_URL+'/events',
+                      // async: false,
+                      method: 'GET',
+                      success: function(event_list) {
+                              for (var i in event_list)
+                              {
+                                      var event = event_list[i];
+                                      $(`#event-${i}`).html(
+                                              `<div class="item-events">
+                                               <img src="${event.image_url}">
+                                               </div>
+                                               <div class="tab-events">
+                                               <div class="upper-tab-event">
+                                               <p>${event.title}</p>
+                                               </div>
+                                               <div class="lower-tab-event">
+                                               <p>${event.date}</p>
+                                               </div>
+                                               </div>`
+                                            );
+                                    }
+                              add_menu();
+                            },
+                    });
+            };
+      function add_menu() {
+              document.getElementById('event-0').insertAdjacentHTML('beforebegin',
+                      `<select id="menu" name="menu">
+                         <option value="" selected>Please choose</option>
+                         <option value="terminati">terminati</option>
+                         <option value="live">live</option>
+                         <option value="futuri">futuri</option>
+                         <option value="città">città</option>
+                       </select>`);
+            }
+    </script>
+  </head>
+  <body> 
+    <h1>Prove Javascript</h1> 
+    <p id="para1">Codice fantoccio: API non veramente disponibile.</p>
+  </body>
+</html>
