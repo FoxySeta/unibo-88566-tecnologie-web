@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head> 
+    <title>Prove Javascript</title>
+    <script type="text/javascript">
+      onclick_fn = () => {
+        let button = document.getElementsByTagName("button")[0];
+        let para1 = document.getElementById("para1");
+        for (let i = 0; i <= 10; ++i)
+          setTimeout(() => {
+            para1.textContent = i;
+            if (i === 0)
+              button.disabled = true;
+            if (i === 10)
+              button.disabled = false;
+          }, i * 1000);
+      }
+    </script>
+  </head>
+  <body> 
+    <h1>Prove Javascript</h1> 
+    <p id="para1">Un paragrafo di prova.</p>
+    <button type="button" onclick="onclick_fn()">
+      Clicca qui
+    </button>
+  </body>
+</html>
