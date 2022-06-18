@@ -1,0 +1,17 @@
+@prefix rdf: <...>.
+@prefix foaf: <...>.
+
+#1.
+
+<http://example.org/people/Bob>
+  rdf:type foaf:Person;
+  foaf:name "Bob";
+  foaf:knows [
+    rdf:type foaf:Person;
+    foaf:name "Linda"
+  ].
+
+# 2. Siccome ci sono cinque archi nel grafo, ci sono cinque triple nel grafo.
+# 3. Bisogna anonimizzare il secondo oggetto rimuovendone l'@id, e spostandolo
+#    dalla sua posizione a quella del valore di foaf:knows. Tutti i [] vanno
+#    inoltre rimossi.
