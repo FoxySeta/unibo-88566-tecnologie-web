@@ -1,0 +1,12 @@
+@prefix rd: <...>.
+@prefix my: <...>.
+
+[
+  rd:type my:avvenimento;
+  my:agente my:Giulio;
+  my:azione my:mettere;
+  my:subente my:tacchino.
+]
+
+my:Giulio
+  my:name "Giulio".

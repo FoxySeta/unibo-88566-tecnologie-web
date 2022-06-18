@@ -1,0 +1,9 @@
+(my:Giulio) --- my:ha_comprato --> (my:tacchino)
+    |
+    |
+    |
+my:si_chiama
+    |
+    |
+    v
+[Giulio]

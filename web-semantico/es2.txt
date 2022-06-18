@@ -1,0 +1,4 @@
+(   ) --- rd:type --> (my:avvenimento)
+      --- my:agente --> (my:Giulio) --- my:name --> [Giulio]
+      --- my:azione --> (my:mettere)
+      --- my:subente --> (my:tacchino)

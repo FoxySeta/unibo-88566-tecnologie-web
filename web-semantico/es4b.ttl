@@ -1,0 +1,5 @@
+@prefix my: <...>.
+
+my:Giulio
+  my:si_chiama "Giulio";
+  my:ha_comprato my:tacchino.

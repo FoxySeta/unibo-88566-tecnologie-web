@@ -1,0 +1,19 @@
+{
+  "@context": {
+    "my": "..."
+  },
+  "@type": "my:avvenimento",
+  "my:agente": {
+    "@id": "my:Giulio",
+    "my:name": {
+      "my:type": "string",
+      "@value": "Giulio"
+    }
+  },
+  "my:azione": {
+    "@id": "my:mettere"
+  },
+  "my:subente": {
+    "@id": "my:tacchino
+  }
+}

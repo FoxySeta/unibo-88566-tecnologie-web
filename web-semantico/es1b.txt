@@ -1,0 +1,9 @@
+(my:Giulio) --- my:ha_comprato --> (my:George) --- my:ha_specie --> (my:tacchino)
+    |                                  |
+    |                                  |
+    |                                  |
+my:si_chiama                       my:si_chiama
+    |                                  |
+    |                                  |
+    v                                  v
+[Giulio]                           [George]

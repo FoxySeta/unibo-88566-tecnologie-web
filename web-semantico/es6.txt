@@ -1,0 +1,10 @@
+(user:MSporny) --- @type --> (foaf:Person) <-------+
+               --- foaf:name --> [Manu Sporny]     |
+               --- foaf:knows --> (   ) --- @type -+
+                                        --- foaf:name --> [Gregg Kellogg]
+
+Siccome abbiamo tre frecce entranti o uscenti da (   ), abbiamo tre triple con
+oggetti o soggetti anonimi.
+
+Siccome abbiamo tre frecce entrati in (   ) o [...], abbiamo tre triple che non
+hanno come oggetto un URI.

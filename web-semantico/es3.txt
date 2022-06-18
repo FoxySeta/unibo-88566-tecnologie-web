@@ -1,0 +1,11 @@
+[my:tè] --- es:ha_tipo --> [my:pianta]
+  | | |
+  | | +- es:ha-coltivazione --> (   ) --- es:ha_luogo --> [my:India]
+  | |                                 --- es:ha_tipo --> [my:coltivazione]
+  | +- es:ha-coltivazione --> (   ) --- es:ha_luogo --> [my:Cina]
+  |                                 --- es:ha_tipo --> [my:coltivazione]
+  +- es:ha coltivazione --> (   ) --- es:ha_luogo --> (   ) --- es:ha_tipo --> [my:Pease_non_indocinese]
+                                  --- es:ha_tipo --> [my:coltivazione]
+Con solo questi tre predicati, non riusciamo a rappresentare la pluralità degli
+altri Paesi (ci limitiamo a un Paese solo), ed esprimiamo che debba essere non
+indocinese con un oggetto ad hoc (in modo molto forzato).
